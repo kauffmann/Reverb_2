@@ -38,7 +38,6 @@ END_JUCE_MODULE_DECLARATION
 
 
 #include "include/dsp/FDN_Reverb.h"
-#include "include/gui/PluginEditor.h"
 #include "include/proces_DAW_control/PluginProcessor.h"
-
+#include "include/gui/PluginEditor.h"
 

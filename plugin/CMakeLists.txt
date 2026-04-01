@@ -63,6 +63,7 @@ target_compile_definitions(ReverbPlugin
 
 #add_library(tremolo::tremolo_plugin_assets ALIAS tremolo_plugin_assets)
 
+# important, the name reverb must match name of module created in reverb.h
 juce_add_module(reverb ALIAS_NAMESPACE audio_head)
 
 # Additional definitions required by all users of this module.
@@ -87,7 +88,7 @@ target_link_libraries(
 )
 
 
-# Make the Geraint-Luff_DSP directory visible to the compiler
+# Make the Geraint-Luff_DSP directory visible to the compiler. I do this since it is not a library, and must be added as directory instead linked to target.
 target_include_directories(ReverbPlugin PRIVATE ${LIB_DSP})
 
 

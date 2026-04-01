@@ -282,3 +282,5 @@ void AudioPluginAudioProcessor::parameterChanged(const juce::String& parameterID
         reverb.setPreDelay(newValue);
     }
 }
+
+
