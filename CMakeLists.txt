@@ -95,7 +95,7 @@ endif()
 
 # Adds all the targets configured in the "plugin" folder.
 add_subdirectory(plugin)
-add_subdirectory(Geraint-Luff_DSP)
+
 
 # In Visual Studio this command provides a nice grouping of source files in "filters".
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR}/..)

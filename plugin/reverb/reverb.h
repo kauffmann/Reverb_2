@@ -3,7 +3,7 @@
 
 BEGIN_JUCE_MODULE_DECLARATION
 
-   ID:            reverb_plugin
+   ID:            reverb
    vendor:        Michael Kauffmann
    version:       1.0.0
    name:          Reverb Plugin

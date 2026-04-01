@@ -9,7 +9,7 @@ cmake_minimum_required(VERSION 4.2 FATAL_ERROR)
 
 set(CMAKE_CXX_STANDARD 26)
 
-set(LIB_DSP ${CMAKE_CURRENT_SOURCE_DIR}/Geraint-Luff_DSP)
+set(LIB_DSP ${CMAKE_SOURCE_DIR}/Geraint-Luff_DSP)
 
 # Adds a plugin target.
 set(PLUGIN_NAME "Reverb")
@@ -66,13 +66,13 @@ target_compile_definitions(ReverbPlugin
 juce_add_module(reverb ALIAS_NAMESPACE audio_head)
 
 # Additional definitions required by all users of this module.
-target_compile_definitions(plugin
+target_compile_definitions(ReverbPlugin
         INTERFACE
         PLUGIN_NAME="${PLUGIN_NAME}"
 )
 
 # Enables strict C++ warnings.
-target_compile_options(plugin INTERFACE "${PROJECT_WARNINGS_CXX}")
+target_compile_options(ReverbPlugin INTERFACE "${PROJECT_WARNINGS_CXX}")
 
 #target_link_libraries(tremolo_plugin INTERFACE tremolo::tremolo_plugin_assets)
 
@@ -80,12 +80,17 @@ target_link_libraries(
         ReverbPlugin
         PRIVATE
         audio_head::reverb
-        "${LIB_DSP}"
         PUBLIC
         juce::juce_recommended_config_flags
         juce::juce_recommended_lto_flags
         juce::juce_recommended_warning_flags
 )
+
+
+# Make the Geraint-Luff_DSP directory visible to the compiler
+target_include_directories(ReverbPlugin PRIVATE ${LIB_DSP})
+
+
 # Zip the .vst3 bundle with the README.txt file
 #[[get_target_property(VST3_BUNDLE_PATH ReverbPlugin_VST3 JUCE_PLUGIN_ARTEFACT_FILE)
 cmake_path(GET VST3_BUNDLE_PATH PARENT_PATH VST3_BUNDLE_OUTPUT_DIR)
