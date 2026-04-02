@@ -64,6 +64,7 @@ target_compile_definitions(ReverbPlugin
 #add_library(tremolo::tremolo_plugin_assets ALIAS tremolo_plugin_assets)
 
 # important, the name reverb must match name of module created in reverb.h
+# audio_head is namespace in Cmake, not in source project code - not the same
 juce_add_module(reverb ALIAS_NAMESPACE audio_head)
 
 # Additional definitions required by all users of this module.

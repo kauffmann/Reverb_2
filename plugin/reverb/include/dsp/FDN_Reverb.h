@@ -367,11 +367,12 @@ struct BasicReverb {
 
 	void configure(double newSampleRate) 
 	{
+		sampleRate = newSampleRate;
 		feedback.configure(sampleRate);
 		diffuser.configure(sampleRate);
 		earlyReflections.configure(sampleRate);
 		preDelay.configure(sampleRate);
-		sampleRate = newSampleRate;
+
 	}
 	
 	
