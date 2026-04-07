@@ -296,6 +296,10 @@ struct BasicReverb {
 
 	signalsmith::mix::StereoMultiMixer<float, channels> mix;
 
+	/*std::atomic<bool> needsReconfigure{false};
+	std::atomic<double> pendingPreDelayMs{20};
+	std::atomic<double> pendingRoomSizeMs{50};*/
+
 	BasicReverb() 
 	{
 		// try differenct values
@@ -321,13 +325,17 @@ struct BasicReverb {
 	void setPreDelay(double timeMs)
 	{
 		preDelay.setPreDelayMs(timeMs, sampleRate);
+		//pendingPreDelayMs = timeMs;
+		//needsReconfigure = true;
 	}
 
 	void setRoomSize(double sizeValue)
 	{
+		//pendingRoomSizeMs = sizeValue;
+		//needsReconfigure = true;
+
 		roomSizeMs = sizeValue;
-		//diffuser.setDelayMsRange(roomSizeMs);
-		//diffuser.configure(sampleRate);
+
 
 		updateDecayGain();
 
@@ -381,7 +389,26 @@ struct BasicReverb {
 	// It process by sample. Feed it a buffer writer pointer. Is called from AudioPluginAudioProcessor  processBlock()
 	void process(float* ch1, float* ch2, int numSamples) 
 	{
-		
+
+		// Check at the START of the buffer if we need to reconfigure
+		/*if (needsReconfigure.exchange(false)) {
+			roomSizeMs = pendingRoomSizeMs;
+			preDelay.setPreDelayMs(pendingPreDelayMs, sampleRate);
+
+			// Reconfigure early reflections too
+			if (roomSizeMs <= 50) {
+				earlyReflections.configureDelayRange(5, 15, sampleRate);
+			}
+			else if (roomSizeMs <= 100) {
+				earlyReflections.configureDelayRange(10, 30, sampleRate);
+			}
+			else {
+				earlyReflections.configureDelayRange(20, 50, sampleRate);
+			}
+
+			updateDecayGain();
+		}*/
+
 		// In: store incoming 2 channel input ch1/ch2.
 		// Out: is the multichannel output from this reverb process.
 		// Out is mixed down to 2 ch In, and then used to overwrite ch1/ch2 

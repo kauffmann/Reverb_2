@@ -251,6 +251,10 @@ juce::AudioProcessorValueTreeState::ParameterLayout AudioPluginAudioProcessor::c
 
 void AudioPluginAudioProcessor::parameterChanged(const juce::String& parameterID, float newValue) 
 {
+
+
+
+
     if (parameterID == "SIZE")
     {
         reverb.setRoomSize(newValue);
@@ -281,6 +285,7 @@ void AudioPluginAudioProcessor::parameterChanged(const juce::String& parameterID
     {
         reverb.setPreDelay(newValue);
     }
+
 }
 
 

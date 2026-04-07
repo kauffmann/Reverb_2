@@ -59,6 +59,8 @@ private:
 	// Listener callback when parameters change
 	void parameterChanged(const juce::String& parameterID, float newValue) override;
 
+
+
 	
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(AudioPluginAudioProcessor)
 };

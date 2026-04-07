@@ -73,7 +73,9 @@ target_compile_definitions(ReverbPlugin
         PLUGIN_NAME="${PLUGIN_NAME}"
 )
 
-# Enables strict C++ warnings.
+
+
+# Enables strict C++ warnings, located and set in CompilerWarnings.cmake
 target_compile_options(ReverbPlugin INTERFACE "${PROJECT_WARNINGS_CXX}")
 
 #target_link_libraries(tremolo_plugin INTERFACE tremolo::tremolo_plugin_assets)
