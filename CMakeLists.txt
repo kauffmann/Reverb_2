@@ -47,6 +47,15 @@ set(CMAKE_OSX_ARCHITECTURES "x86_64;arm64" CACHE STRING "" FORCE)
 
 endif()]]
 
+#[[if (CMAKE_CXX_COMPILER_ID MATCHES "Clang|AppleClang" AND CMAKE_BUILD_TYPE STREQUAL "Debug")
+    add_compile_options(
+            -fsanitize=address
+            -fno-omit-frame-pointer
+            -g
+    )
+    add_link_options(-fsanitize=address)
+endif()]]
+
 
 
 # I like to download the dependencies to the same folder as the project.

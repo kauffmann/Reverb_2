@@ -59,7 +59,12 @@ private:
 	// Listener callback when parameters change
 	void parameterChanged(const juce::String& parameterID, float newValue) override;
 
-
+	// RUN: clang -O -g -fsanitize=address %t && ./a.out
+	int tester(int argc) {
+		int stack_array[100];
+		stack_array[1] = 0;
+		return stack_array[argc + 100];  // BOOM
+	}
 
 	
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(AudioPluginAudioProcessor)

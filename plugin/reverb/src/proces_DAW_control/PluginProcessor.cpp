@@ -93,6 +93,12 @@ void AudioPluginAudioProcessor::prepareToPlay(double sampleRate,
   juce::ignoreUnused(sampleRate, samplesPerBlock);
 
   reverb.configure(sampleRate);
+    /*int arr[5] = {0, 1, 2, 3, 4};
+    std::cout << "Accessing out of bounds (stack buffer overflow): ";
+    std::cout << arr[10] << std::endl;  // ASan will catch this*/
+
+
+
 
   
 }
@@ -204,7 +210,17 @@ juce::AudioProcessorValueTreeState::ParameterLayout AudioPluginAudioProcessor::c
     params.push_back(std::make_unique<juce::AudioParameterFloat>("SIZE",
         "Room Size",
         juce::NormalisableRange<float>(10.0f, 200.0f, 10.0f),
-        50.0f)); // default:
+        50.0f, String(), AudioProcessorParameter::genericParameter,
+        [](float value, int) -> String
+        {
+
+
+            String valueToText =
+                String(value , 1) + " TODO";
+
+
+            return valueToText;
+        })); // default:
 
     
     params.push_back(std::make_unique<juce::AudioParameterFloat>("DECAY",
