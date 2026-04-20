@@ -9,7 +9,7 @@ AudioPluginAudioProcessor::AudioPluginAudioProcessor()
 #endif
               .withOutput("Output", juce::AudioChannelSet::stereo(), true)
 #endif
-      ), apvts(*this, nullptr, "Parameters", createParameterLayout()) {
+      ), apvts(*this, nullptr, "Parameters", parameters.createParameterLayout()) {
     
     // Register the processor as a listener to the parameters
     apvts.addParameterListener("SIZE", this);
@@ -200,13 +200,12 @@ juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter() {
 }
 
 
+/*juce::AudioProcessorValueTreeState::ParameterLayout AudioPluginAudioProcessor::createParameterLayout()
 
-
-juce::AudioProcessorValueTreeState::ParameterLayout AudioPluginAudioProcessor::createParameterLayout()
 {
     std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
+    juce::AudioProcessorValueTreeState::ParameterLayout layout;
 
-    
     params.push_back(std::make_unique<juce::AudioParameterFloat>("SIZE",
         "Room Size",
         juce::NormalisableRange<float>(10.0f, 200.0f, 10.0f),
@@ -263,7 +262,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout AudioPluginAudioProcessor::c
     
 
     return { params.begin(), params.end() };
-}
+}*/
 
 void AudioPluginAudioProcessor::parameterChanged(const juce::String& parameterID, float newValue) 
 {

@@ -54,7 +54,9 @@ private:
 
 
 	// Add a function to help with setting parameters
-	juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
+	//juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
+
+	Parameters parameters;
 
 	// Listener callback when parameters change
 	void parameterChanged(const juce::String& parameterID, float newValue) override;
