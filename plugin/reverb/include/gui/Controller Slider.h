@@ -23,14 +23,10 @@ public:
 
     void sliderValueChanged (Slider*) override;
 
-    inline MFXParameter getParameterValueText()
-    {
 
-        return mParameterValueText;
-    }
 
 private:
-    juce::Point<int> mInitialDownMousePosition;
+    Point<int> mInitialDownMousePosition;
     std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> mAttachment;
     PluginProcessor& mProcessor;
 

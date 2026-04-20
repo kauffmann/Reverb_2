@@ -1,7 +1,7 @@
 
 
 
-juce::AudioProcessorValueTreeState::ParameterLayout Parameters::createParameterLayout()
+AudioProcessorValueTreeState::ParameterLayout Parameters::createParameterLayout()
 {
     juce::AudioProcessorValueTreeState::ParameterLayout layout;
     constexpr auto versionHint = 1;
