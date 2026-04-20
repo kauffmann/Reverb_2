@@ -53,8 +53,6 @@ private:
 	juce::AudioProcessorValueTreeState apvts;
 
 
-	// Add a function to help with setting parameters
-	//juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
 
 	Parameters parameters;
 
