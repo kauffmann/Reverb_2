@@ -1,6 +1,7 @@
 
 
 
+#include "ReverbAssets.h"
 
 AudioPluginAudioProcessorEditor::AudioPluginAudioProcessorEditor(
     AudioPluginAudioProcessor& p)
@@ -8,10 +9,10 @@ AudioPluginAudioProcessorEditor::AudioPluginAudioProcessorEditor(
   juce::ignoreUnused(processorRef);
   // Make sure that before the constructor has finished, you've set the
   // editor's size to whatever you need it to be.
-  setSize(400, 300);
+  setSize(800, 400);
 
 
-  background = juce::ImageCache::getFromMemory(BinaryData::Background_png, BinaryData::Background_pngSize);
+  background = juce::ImageCache::getFromMemory(reverb::assets::background_png, reverb::assets::background_pngSize);
 
   
 }
@@ -24,12 +25,12 @@ void AudioPluginAudioProcessorEditor::paint(juce::Graphics& g) {
   g.fillAll(
       getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId));
 
-    //g.drawImageWithin(background, 0, 0, getWidth(), getHeight(), RectanglePlacement::stretchToFit, false);
+    g.drawImageWithin(background, 0, 0, getWidth(), getHeight(), juce::RectanglePlacement::stretchToFit, false);
 
 
   g.setColour(juce::Colours::white);
   g.setFont(15.0f);
-  g.drawFittedText("Hello to you World!", getLocalBounds(),
+  g.drawFittedText("Reverb", getLocalBounds(),
                    juce::Justification::centred, 1);
 }
 

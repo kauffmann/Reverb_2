@@ -150,7 +150,7 @@ bool AudioPluginAudioProcessor::hasEditor() const {
 }
 
 juce::AudioProcessorEditor* AudioPluginAudioProcessor::createEditor() {
-  return new juce::GenericAudioProcessorEditor(*this);
+  return new AudioPluginAudioProcessorEditor(*this);
 }
 
 void AudioPluginAudioProcessor::getStateInformation(
