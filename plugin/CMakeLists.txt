@@ -49,19 +49,7 @@ target_compile_definitions(ReverbPlugin
         JUCE_VST3_CAN_REPLACE_VST2=0
 )
 
-#[[juce_add_binary_data(tremolo_plugin_assets
-        HEADER_NAME
-        "TremoloPluginAssets.h"
-        NAMESPACE
-        tremolo::assets
-        SOURCES
-        assets/Background.png
-        assets/Logo.png
-        assets/Inter-Bold.ttf
-        assets/Inter-Medium.ttf
-)]]
 
-#add_library(tremolo::tremolo_plugin_assets ALIAS tremolo_plugin_assets)
 
 # important, the name reverb must match name of module created in reverb.h
 # audio_head is namespace in Cmake, not in source project code - not the same
@@ -78,7 +66,8 @@ target_compile_definitions(ReverbPlugin
 # Enables strict C++ warnings, located and set in CompilerWarnings.cmake
 target_compile_options(ReverbPlugin INTERFACE "${PROJECT_WARNINGS_CXX}")
 
-#target_link_libraries(tremolo_plugin INTERFACE tremolo::tremolo_plugin_assets)
+
+target_link_libraries(ReverbPlugin PRIVATE reverb::assets)
 
 target_link_libraries(
         ReverbPlugin

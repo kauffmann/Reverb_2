@@ -14,7 +14,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout Parameters::createParameterL
         [](float value, int) -> juce::String
         {
             juce::String valueToText =
-                juce::String(value , 1) + " DODO";
+                juce::String(value , 1) + " TODO";
 
             return valueToText;
         })); // default:

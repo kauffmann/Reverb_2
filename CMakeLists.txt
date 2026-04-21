@@ -101,7 +101,7 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
     set_directory_properties(PROPERTIES JUCE_VST3_COPY_DIR "$ENV{LOCALAPPDATA}/Programs/Common/VST3")
 endif()
 
-
+add_subdirectory(assets)
 # Adds all the targets configured in the "plugin" folder.
 add_subdirectory(plugin)
 
@@ -110,108 +110,3 @@ add_subdirectory(plugin)
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR}/..)
 
 
-# -----------------------------------------delete all below this
-# Adds a plugin target.
-#[[
-set(TREMOLO_PLUGIN_NAME "Reverb")
-
-juce_add_plugin(
-        ReverbPlugin # name of plugin target
-        PRODUCT_NAME
-        ${TREMOLO_PLUGIN_NAME}
-        VERSION
-        0.0.0 # 0 forces AU hosts to always refresh.
-        COMPANY_NAME
-        "Audio Head"
-        PLUGIN_MANUFACTURER_CODE
-        Auhe # good practice to use company name as source to make strong unique code, that differ from other companies.
-        PLUGIN_CODE
-        Rerb # # good practice to use plugin name as source to make strong unique code, that differ from other companies.
-        FORMATS
-        Standalone
-        AU
-        VST3
-        IS_SYNTH
-        FALSE
-        NEEDS_MIDI_INPUT
-        FALSE
-        NEEDS_MIDI_OUTPUT
-        FALSE
-        VST3_AUTO_MANIFEST
-        FALSE
-        COPY_PLUGIN_AFTER_BUILD # set true to copy build plugin to system plugin dir. Se windows case above.
-        True
-)
-
-# Configures the JUCE sources included in the plugin target.
-target_compile_definitions(ReverbPlugin
-        PRIVATE
-        JUCE_WEB_BROWSER=0
-        JUCE_USE_CURL=0
-        JUCE_VST3_CAN_REPLACE_VST2=0
-)
-
-juce_add_binary_data(tremolo_plugin_assets
-        HEADER_NAME
-        "TremoloPluginAssets.h"
-        NAMESPACE
-        tremolo::assets
-        SOURCES
-        assets/Background.png
-        assets/Logo.png
-        assets/Inter-Bold.ttf
-        assets/Inter-Medium.ttf
-)
-
-add_library(tremolo::tremolo_plugin_assets ALIAS tremolo_plugin_assets)
-
-juce_add_module(tremolo_plugin ALIAS_NAMESPACE tremolo)
-
-# Additional definitions required by all users of this module.
-target_compile_definitions(tremolo_plugin
-        INTERFACE
-        TREMOLO_PLUGIN_NAME="${TREMOLO_PLUGIN_NAME}"
-)
-
-# Enables strict C++ warnings.
-target_compile_options(tremolo_plugin INTERFACE "${PROJECT_WARNINGS_CXX}")
-
-target_link_libraries(tremolo_plugin INTERFACE tremolo::tremolo_plugin_assets)
-
-target_link_libraries(
-        ReverbPlugin
-        PRIVATE
-        tremolo::tremolo_plugin
-        PUBLIC
-        juce::juce_recommended_config_flags
-        juce::juce_recommended_lto_flags
-        juce::juce_recommended_warning_flags
-)
-# Zip the .vst3 bundle with the README.txt file
-get_target_property(VST3_BUNDLE_PATH ReverbPlugin_VST3 JUCE_PLUGIN_ARTEFACT_FILE)
-cmake_path(GET VST3_BUNDLE_PATH PARENT_PATH VST3_BUNDLE_OUTPUT_DIR)
-add_custom_command(
-        TARGET ReverbPlugin_VST3
-        POST_BUILD
-        WORKING_DIRECTORY ${VST3_BUNDLE_OUTPUT_DIR}
-        # For some reason, if the README.txt is in a different directory, zipping it fails, thus, we need to copy it first
-        COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/assets/README.txt" ${VST3_BUNDLE_OUTPUT_DIR}
-        COMMAND ${CMAKE_COMMAND} -E tar cvf "${VST3_BUNDLE_OUTPUT_DIR}/Tremolo.zip" --format=zip -- "${VST3_BUNDLE_PATH}" README.txt
-)
-
-# In Visual Studio this command provides a nice grouping of source files in "filters".
-source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR}/..)
-
-option(BUILD_EXAMPLES "When on, the supplied example apps will be added as targets and built" OFF)
-if(BUILD_EXAMPLES)
-    add_subdirectory(examples)
-endif()
-
-option(BUILD_TESTS "When on, will download the GoogleTest framework and add the automated tests project" OFF)
-if(BUILD_TESTS)
-    # This command allows running tests from the "build" folder (the one where CMake generates the project to).
-    enable_testing()
-
-    # Adds all the targets configured in the "test" folder.
-    add_subdirectory(test)
-endif()]]
