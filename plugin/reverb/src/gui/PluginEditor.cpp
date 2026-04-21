@@ -10,7 +10,9 @@ AudioPluginAudioProcessorEditor::AudioPluginAudioProcessorEditor(
   // editor's size to whatever you need it to be.
   setSize(400, 300);
 
-//button = ImageCache::getFromMemory(BinaryData::BgLarge_png, BinaryData::BgLarge_pngSize);
+
+  background = juce::ImageCache::getFromMemory(BinaryData::Background_png, BinaryData::Background_pngSize);
+
   
 }
 
@@ -22,7 +24,8 @@ void AudioPluginAudioProcessorEditor::paint(juce::Graphics& g) {
   g.fillAll(
       getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId));
 
-    //g.drawImageWithin(button, 0, 0, getWidth(), getHeight(), RectanglePlacement::stretchToFit, false);
+    //g.drawImageWithin(background, 0, 0, getWidth(), getHeight(), RectanglePlacement::stretchToFit, false);
+
 
   g.setColour(juce::Colours::white);
   g.setFont(15.0f);

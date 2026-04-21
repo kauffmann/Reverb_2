@@ -14,7 +14,7 @@ private:
   // access the processor object that created it.
   AudioPluginAudioProcessor& processorRef;
 
-  //Image button; 
+  juce::Image background;
    
 
     
