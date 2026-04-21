@@ -2,11 +2,11 @@
 
 
 
-ControllerSlider::ContollerSlider ( AudioProcessorValueTreeState& state,
+ControllerSlider::ControllerSlider ( AudioProcessorValueTreeState& state,
 const String& parameterID,
 const String& parameterLabel,
 PluginProcessor* inProcessor)
-: juce::Slider(parameterLabel), mParameterValueText(valueTextIndex), mProcessor(*inProcessor)
+: juce::Slider(parameterLabel), mProcessor(*inProcessor)
 {
     setSliderStyle(SliderStyle::RotaryHorizontalVerticalDrag);
     setTextBoxStyle(Slider::TextEntryBoxPosition::NoTextBox, false, 0, 0);

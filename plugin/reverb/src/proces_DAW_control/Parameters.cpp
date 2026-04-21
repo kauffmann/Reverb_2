@@ -3,7 +3,7 @@
 
 AudioProcessorValueTreeState::ParameterLayout Parameters::createParameterLayout()
 {
-    juce::AudioProcessorValueTreeState::ParameterLayout layout;
+    AudioProcessorValueTreeState::ParameterLayout layout;
     constexpr auto versionHint = 1;
 
     layout.add(std::make_unique<juce::AudioParameterFloat>(ParameterID{"SIZE",versionHint},

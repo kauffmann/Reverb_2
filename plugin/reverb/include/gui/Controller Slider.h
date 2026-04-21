@@ -1,16 +1,16 @@
 #pragma once
 
-class ContollerSlider : public Slider, public Slider::Listener, public Timer
+class ControllerSlider : public Slider, public Slider::Listener, public Timer
 {
 
 public:
 
 
-    ContollerSlider( AudioProcessorValueTreeState& state,
+    ControllerSlider( AudioProcessorValueTreeState& state,
                      const String& parameterID,
                      const String& parameterLabel,
                      PluginProcessor* inProcessor);
-    ~ContollerSlider();
+    ~ControllerSlider();
 
 
     void mouseDown(const MouseEvent& event) override;
@@ -28,11 +28,11 @@ public:
 private:
     Point<int> mInitialDownMousePosition;
     std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> mAttachment;
-    PluginProcessor& mProcessor;
+    PluginProcessor mProcessor;
 
 
 
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ContollerSlider)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ControllerSlider)
 
 };
