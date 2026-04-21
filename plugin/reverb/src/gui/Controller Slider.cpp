@@ -3,9 +3,9 @@ using namespace juce;
 
 
 
-ControllerSlider::ControllerSlider ( AudioProcessorValueTreeState& state,
-                                     const String& parameterID,
-                                     const String& parameterLabel)
+ControllerSlider::ControllerSlider ( juce::AudioProcessorValueTreeState& state,
+                                     const juce::String& parameterID,
+                                     const juce::String& parameterLabel)
 : Slider(parameterLabel)
 {
     setSliderStyle(SliderStyle::RotaryHorizontalVerticalDrag);

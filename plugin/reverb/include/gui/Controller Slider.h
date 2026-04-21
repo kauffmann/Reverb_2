@@ -1,15 +1,15 @@
 #pragma once
 
-using namespace juce;
 
 
-class ControllerSlider : public Slider
+
+class ControllerSlider : public juce::Slider
 {
 
 public:
-    ControllerSlider( AudioProcessorValueTreeState& state,
-                     const String& parameterID,
-                     const String& parameterLabel);
+    ControllerSlider( juce::AudioProcessorValueTreeState& state,
+                     const juce::String& parameterID,
+                     const juce::String& parameterLabel);
 
     ~ControllerSlider();
 
@@ -19,7 +19,7 @@ public:
 
 
 private:
-    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> mAttachment;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> mAttachment;
 
 
 
