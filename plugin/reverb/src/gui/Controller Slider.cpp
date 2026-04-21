@@ -4,10 +4,9 @@ using namespace juce;
 
 
 ControllerSlider::ControllerSlider ( AudioProcessorValueTreeState& state,
-const String& parameterID,
-const String& parameterLabel,
-AudioPluginAudioProcessor* inProcessor)
-: Slider(parameterLabel), mProcessor(*inProcesor)
+                                     const String& parameterID,
+                                     const String& parameterLabel)
+: Slider(parameterLabel)
 {
     setSliderStyle(SliderStyle::RotaryHorizontalVerticalDrag);
     setTextBoxStyle(Slider::TextEntryBoxPosition::NoTextBox, false, 0, 0);
@@ -16,7 +15,7 @@ AudioPluginAudioProcessor* inProcessor)
 
 }
 
-
+ControllerSlider::~ControllerSlider() {}
 
 
 

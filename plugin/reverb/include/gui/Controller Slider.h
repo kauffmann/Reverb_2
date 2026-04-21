@@ -9,8 +9,8 @@ class ControllerSlider : public Slider
 public:
     ControllerSlider( AudioProcessorValueTreeState& state,
                      const String& parameterID,
-                     const String& parameterLabel,
-                     AudioPluginAudioProcessor* inProcessor);
+                     const String& parameterLabel);
+
     ~ControllerSlider();
 
 
@@ -20,7 +20,7 @@ public:
 
 private:
     std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> mAttachment;
-    AudioPluginAudioProcessor mProcessor;
+
 
 
 

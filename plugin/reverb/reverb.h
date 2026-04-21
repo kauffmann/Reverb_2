@@ -39,8 +39,10 @@ END_JUCE_MODULE_DECLARATION
 
 #include "include/dsp/FDN_Reverb.h"
 #include "include/proces_DAW_control/Parameters.h"
-#include "include/gui/Controller Slider.h"
+
 // order matters, if processor is not instantiated  before editor, as editor depend on it.
 #include "include/proces_DAW_control/PluginProcessor.h"
+#include "include/gui/Controller Slider.h"
 #include "include/gui/PluginEditor.h"
+
 
