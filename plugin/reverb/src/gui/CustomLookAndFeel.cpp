@@ -222,13 +222,13 @@ void CustomLookAndFeel::drawToggleButton(juce::Graphics& g,
 
 juce::FontOptions CustomLookAndFeel::interMedium() {
   static const auto result = juce::Typeface::createSystemTypefaceFor(
-      reverb::assets::Inter_Medium_tff , reverb::assets::Inter-Medium_ttfSize);
+      reverb::assets::InterMedium_ttf , reverb::assets::InterMedium_ttfSize);
   return juce::FontOptions{result};
 }
 
 juce::FontOptions CustomLookAndFeel::interBold() {
   static const auto result = juce::Typeface::createSystemTypefaceFor(
-      reverb::assets::Inter-Bold_ttf, reverb::assets::Inter-Bold_ttfSize);
+      reverb::assets::InterBold_ttf, reverb::assets::InterBold_ttfSize);
   return juce::FontOptions{result};
 }
 //}  // namespace tremolo

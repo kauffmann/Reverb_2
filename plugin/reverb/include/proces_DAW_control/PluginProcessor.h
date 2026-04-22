@@ -31,7 +31,7 @@ public:
 	const juce::String getProgramName(int index) override;
 	void changeProgramName(int index, const juce::String& newName) override;
 
-	inline juce::String getParamID(juce::AudioProcessorParameter* param)
+	juce::String getParamID(juce::AudioProcessorParameter* param)
 	{
 		if (auto paramWithID = dynamic_cast<juce::AudioProcessorParameterWithID*>(param))
 			return paramWithID->paramID;
@@ -42,7 +42,10 @@ public:
 	void getStateInformation(juce::MemoryBlock& destData) override;
 	void setStateInformation(const void* data, int sizeInBytes) override;
 
-	
+	juce::AudioProcessorValueTreeState& getAPVTS()
+	{
+		return apvts;
+	}
 
 private:
 	

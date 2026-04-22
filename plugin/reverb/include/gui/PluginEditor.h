@@ -15,18 +15,20 @@ private:
   AudioPluginAudioProcessor& processorRef;
 
   juce::Image background;
-  juce::Label sizeLabel{"size label", "SIZE"};
-  juce::Label decayLabel{"decay label", "DECAY"};
-  juce::Label dryLabel{"rate label", "DRY"};
-  juce::Label wetLabel{"rate label", "WET"};
-  juce::Label earlyreflectionLabel{"early reflection label", "EARLY REFLECTION"};
-  juce::Label preDelayLabel{"predelay label", "PREDELAY"};
-  ControllerSlider sizeSlider;
-  ControllerSlider decaySlider;
-  ControllerSlider drySlider;
-  ControllerSlider wetSlider;
-  ControllerSlider earlyReflectionSlider;
-  ControllerSlider preDelay;
+  //juce::Label sizeLabel{"size label", "SIZE"};
+  //juce::Label decayLabel{"decay label", "DECAY"};
+  //juce::Label dryLabel{"rate label", "DRY"};
+  //juce::Label wetLabel{"rate label", "WET"};
+  //juce::Label earlyreflectionLabel{"early reflection label", "EARLY REFLECTION"};
+  //juce::Label preDelayLabel{"predelay label", "PREDELAY"};
+  std::unique_ptr<ControllerSlider> sizeSlider;
+
+
+  //ControllerSlider decaySlider;
+  //ControllerSlider drySlider;
+  //ControllerSlider wetSlider;
+  //ControllerSlider earlyReflectionSlider;
+  //ControllerSlider preDelay;
 
   CustomLookAndFeel lookAndFeel;
 
