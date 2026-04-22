@@ -7,7 +7,7 @@
 
 #include "src/proces_DAW_control/Parameters.cpp"
 #include <ReverbAssets.h>
-#include "CustomLookAndFeel.cpp"
+#include "src/gui/CustomLookAndFeel.cpp"
 #include "src/proces_DAW_control/PluginProcessor.cpp"
 #include  "src/gui/Controller Slider.cpp"
 #include "src/gui/PluginEditor.cpp"

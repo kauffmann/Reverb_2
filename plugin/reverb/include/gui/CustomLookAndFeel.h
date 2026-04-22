@@ -1,6 +1,6 @@
 #pragma once
 
-namespace tremolo {
+//namespace tremolo {
 class CustomLookAndFeel : public juce::LookAndFeel_V4 {
 public:
   enum class Colors : size_t { orange, paleBlue };
@@ -58,4 +58,4 @@ private:
   [[nodiscard]] static juce::FontOptions interMedium();
   [[nodiscard]] static juce::FontOptions interBold();
 };
-}  // namespace tremolo
+//}  // namespace tremolo

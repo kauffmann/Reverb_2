@@ -11,7 +11,8 @@ AudioPluginAudioProcessorEditor::AudioPluginAudioProcessorEditor(
   // editor's size to whatever you need it to be.
   setSize(800, 400);
 
-
+  //background.setImage(juce::ImageCache::getFromMemory(reverb::assets::background_png, reverb::assets::background_pngSize));
+  //addAndMakeVisible(background);
   background = juce::ImageCache::getFromMemory(reverb::assets::background_png, reverb::assets::background_pngSize);
 
   

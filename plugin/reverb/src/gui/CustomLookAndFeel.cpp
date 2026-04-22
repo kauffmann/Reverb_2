@@ -1,5 +1,5 @@
-namespace tremolo {
-namespace {
+//namespace tremolo {
+//namespace {
 constexpr auto buttonInsetWidth = 2.f;
 
 void drawGradientButton(juce::Graphics& g,
@@ -31,7 +31,7 @@ void drawButtonInset(juce::Graphics& g, const juce::Rectangle<float>& bounds) {
   g.setGradientFill(insetGradient);
   g.fillRoundedRectangle(bounds, 6.f);
 }
-}  // namespace
+//}  // namespace
 
 juce::Colour CustomLookAndFeel::getColor(Colors colorName) {
   static const std::array colors{
@@ -222,7 +222,7 @@ void CustomLookAndFeel::drawToggleButton(juce::Graphics& g,
 
 juce::FontOptions CustomLookAndFeel::interMedium() {
   static const auto result = juce::Typeface::createSystemTypefaceFor(
-      assets::InterMedium_ttf, assets::InterMedium_ttfSize);
+      reverb::assets::background_png , assets::InterMedium_ttfSize);
   return juce::FontOptions{result};
 }
 
@@ -231,4 +231,4 @@ juce::FontOptions CustomLookAndFeel::interBold() {
       assets::InterBold_ttf, assets::InterBold_ttfSize);
   return juce::FontOptions{result};
 }
-}  // namespace tremolo
+//}  // namespace tremolo
