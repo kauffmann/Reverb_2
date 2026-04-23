@@ -1,9 +1,4 @@
-# This file handles building each task as sub-project.
-#
-# Each task becomes an independent project in which you can experiment.
-#
-# Tasks are added as separate sub-projects so as compilation errors in
-# one task don't affect another task.
+
 
 cmake_minimum_required(VERSION 4.2 FATAL_ERROR)
 
@@ -14,6 +9,7 @@ set(LIB_DSP ${CMAKE_SOURCE_DIR}/Geraint-Luff_DSP)
 # Adds a plugin target.
 set(PLUGIN_NAME "Reverb")
 
+# Our executable target
 juce_add_plugin( ReverbPlugin # name of plugin target
         PRODUCT_NAME
         ${PLUGIN_NAME}
@@ -84,31 +80,3 @@ target_link_libraries(
 target_include_directories(ReverbPlugin PRIVATE ${LIB_DSP})
 
 
-# Zip the .vst3 bundle with the README.txt file
-#[[get_target_property(VST3_BUNDLE_PATH ReverbPlugin_VST3 JUCE_PLUGIN_ARTEFACT_FILE)
-cmake_path(GET VST3_BUNDLE_PATH PARENT_PATH VST3_BUNDLE_OUTPUT_DIR)
-add_custom_command(
-        TARGET ReverbPlugin_VST3
-        POST_BUILD
-        WORKING_DIRECTORY ${VST3_BUNDLE_OUTPUT_DIR}
-        # For some reason, if the README.txt is in a different directory, zipping it fails, thus, we need to copy it first
-        COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/assets/README.txt" ${VST3_BUNDLE_OUTPUT_DIR}
-        COMMAND ${CMAKE_COMMAND} -E tar cvf "${VST3_BUNDLE_OUTPUT_DIR}/Tremolo.zip" --format=zip -- "${VST3_BUNDLE_PATH}" README.txt
-)]]
-
-
-
-#[[
-option(BUILD_EXAMPLES "When on, the supplied example apps will be added as targets and built" OFF)
-if(BUILD_EXAMPLES)
-    add_subdirectory(examples)
-endif()
-
-option(BUILD_TESTS "When on, will download the GoogleTest framework and add the automated tests project" OFF)
-if(BUILD_TESTS)
-    # This command allows running tests from the "build" folder (the one where CMake generates the project to).
-    enable_testing()
-
-    # Adds all the targets configured in the "test" folder.
-    add_subdirectory(test)
-endif()]]

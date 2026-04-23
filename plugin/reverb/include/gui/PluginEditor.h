@@ -41,11 +41,11 @@ public:
   void resized() override;
 
 private:
-  static constexpr int originalWidth{ 750}; // 1200  // 750
-  static constexpr int originalHeight{ 310}; // 800   //310
+  static constexpr int originalWidth{ 750};
+  static constexpr int originalHeight{ 310};
 
   AudioPluginAudioProcessorEditor rasterComponent;
-  //ApplicationProperties applicationProperties;  // not using, but good to know about
+
   AudioPluginAudioProcessor& mProcessor;
 
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(WrappedRasterAudioProcessorEditor)

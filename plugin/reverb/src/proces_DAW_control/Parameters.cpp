@@ -33,7 +33,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout Parameters::createParameterL
 
     layout.add((std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"WET",versionHint},
         "Wet",
-        juce::NormalisableRange<float>(0.0f, 1.0f, 0.1f),
+        juce::NormalisableRange<float>(0.0f, 0.5f, 0.1f),
         0.3f))); // default
 
     layout.add((std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"EARLY REFLECTIONS",versionHint},

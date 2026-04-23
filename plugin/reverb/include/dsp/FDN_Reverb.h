@@ -133,7 +133,7 @@ struct DiffusionStep {
 			delaySamples[c] = randomInRange::generateRandomReal<double>(rangeLow, rangeHigh); 
 			delays[c].resize(delaySamples[c] + 1);
 			delays[c].reset();
-			flipPolarity[c] = randomInRange::bernoulliDistribution();  //rand() % 2;  
+			flipPolarity[c] = randomInRange::bernoulliDistribution();
 		}
 	}
 	
@@ -302,7 +302,7 @@ struct BasicReverb {
 
 	BasicReverb() 
 	{
-		// try differenct values
+		// try different values
 		diffuser.setDelayMsRange(50);
 		updateDecayGain();
 	}
@@ -324,7 +324,6 @@ struct BasicReverb {
 
 	void setPreDelay(double timeMs)
 	{
-		//preDelay.setPreDelayMs(timeMs, sampleRate);
 		pendingPreDelayMs = timeMs;
 		needsReconfigure = true;
 	}
@@ -333,22 +332,6 @@ struct BasicReverb {
 	{
 		pendingRoomSizeMs = 200.0f - sizeValue;
 		needsReconfigure = true;
-
-		/*roomSizeMs = sizeValue;
-
-
-		updateDecayGain();
-
-		// Set early reflection delay ranges based on room size
-		if (roomSizeMs <= 50) {  // Small room
-			earlyReflections.configureDelayRange(5, 15, sampleRate); // Small reflection times
-		}
-		else if (roomSizeMs <= 100) {  // Medium room
-			earlyReflections.configureDelayRange(10, 30, sampleRate);
-		}
-		else {  // Large room
-			earlyReflections.configureDelayRange(20, 50, sampleRate);
-		}*/
 	}
 
 	void setDecay(double decayValue)
@@ -433,11 +416,6 @@ struct BasicReverb {
 
 			Array diffuse = diffuser.process(earlyReflection);     
 			Array longLasting = feedback.process(diffuse);
-			
-
-			
-		
-			
 
 			for (int c = 0; c < channels; ++c) 
 			{													
@@ -445,16 +423,11 @@ struct BasicReverb {
 				out[c] = (dry * out[c] + diffuserGain * longLasting[c] + earlyReflection[c] * earlyReflectionGain) * scalingFactor;
 			}
 
-			
-
 			mix.multiToStereo(out, in);
 
 			ch1[i] = in[0];
 			ch2[i] = in[1];
 		}
 	}
-
-		
-
 
 };

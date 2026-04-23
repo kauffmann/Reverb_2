@@ -15,8 +15,8 @@ AudioPluginAudioProcessor::AudioPluginAudioProcessor()
     apvts.addParameterListener("SIZE", this);
     apvts.addParameterListener("DECAY", this);
     apvts.addParameterListener("DRY", this);
-    apvts.addParameterListener("DIFFUSSER", this);
-    apvts.addParameterListener("WET_REFLECTIONS", this);
+    apvts.addParameterListener("WET", this);
+    apvts.addParameterListener("EARLY REFLECTIONS", this);
     apvts.addParameterListener("PREDELAY", this);
 }
 
@@ -25,8 +25,8 @@ AudioPluginAudioProcessor::~AudioPluginAudioProcessor()
     apvts.removeParameterListener("SIZE", this);
     apvts.removeParameterListener("DECAY", this);
     apvts.removeParameterListener("DRY", this);
-    apvts.removeParameterListener("DIFFUSSER", this);
-    apvts.removeParameterListener("WET_REFLECTIONS", this);
+    apvts.removeParameterListener("WET", this);
+    apvts.removeParameterListener("EARLY REFLECTIONS", this);
     apvts.removeParameterListener("PREDELAY", this);
 }
 
@@ -224,12 +224,12 @@ void AudioPluginAudioProcessor::parameterChanged(const juce::String& parameterID
        reverb.setDry(newValue);
     }
 
-    else if (parameterID == "DIFFUSSER") 
+    else if (parameterID == "WET")
     {
         reverb.setDiffusionGain(newValue);
     }
 
-    else if (parameterID == "WET_REFLECTIONS") 
+    else if (parameterID == "EARLY REFLECTIONS")
     {
         reverb.setEarlyReflections(newValue);
     }

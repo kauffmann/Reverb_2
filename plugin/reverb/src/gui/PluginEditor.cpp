@@ -5,13 +5,11 @@
 
 AudioPluginAudioProcessorEditor::AudioPluginAudioProcessorEditor(
     AudioPluginAudioProcessor& p)
-    : processorRef(p) {
-  juce::ignoreUnused(processorRef);
+    : processorRef(p)
+{
 
 
-  //background.setImage(juce::ImageCache::getFromMemory(reverb::assets::background_png, reverb::assets::background_pngSize));
-  //addAndMakeVisible(background);
-  background = juce::ImageCache::getFromMemory(reverb::assets::background_blue_png, reverb::assets::background_blue_pngSize);
+  background = juce::ImageCache::getFromMemory(reverb::assets::background_allBlue_png, reverb::assets::background_allBlue_pngSize);
 
   sizeSlider = std::make_unique<ControllerSlider>(processorRef.getAPVTS(), "SIZE", "Room Size");
   //sizeSlider->setTextValueSuffix(" ");
@@ -55,7 +53,7 @@ AudioPluginAudioProcessorEditor::AudioPluginAudioProcessorEditor(
   wetLabel.setFont(lookAndFeel.getSliderLabelFont());
   addAndMakeVisible(wetLabel);
 
-  earlyReflectionSlider = std::make_unique<ControllerSlider>(processorRef.getAPVTS(), "EARLY REFLECTIONS", "Early reflection");
+  earlyReflectionSlider = std::make_unique<ControllerSlider>(processorRef.getAPVTS(), "EARLY REFLECTIONS", "Early Reflection");
   earlyReflectionSlider->setPopupDisplayEnabled(true, true, this);
 
   addAndMakeVisible(earlyReflectionSlider.get());
@@ -86,66 +84,59 @@ AudioPluginAudioProcessorEditor::~AudioPluginAudioProcessorEditor()
 }
 
 void AudioPluginAudioProcessorEditor::paint(juce::Graphics& g) {
-  // (Our component is opaque, so we must completely fill the background with a
-  // solid colour)
-  g.fillAll(
-      getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId));
 
-    g.drawImageWithin(background, 0, 0, getWidth(), getHeight(), juce::RectanglePlacement::stretchToFit, false);
-
-
+  g.fillAll( getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId));
+  g.drawImageWithin(background, 0, 0, getWidth(), getHeight(), juce::RectanglePlacement::stretchToFit, false);
   g.setColour(juce::Colours::white);
   g.setFont(15.0f);
-  //g.drawFittedText("Reverb", getLocalBounds(),
-    //               juce::Justification::centred, 1);
+
 }
 
 void AudioPluginAudioProcessorEditor::resized() {
 
-  const int slider_size = 100;
+  const int slider_size = 80;
 
   int sliderXpos = static_cast<int>( getWidth() / 6);
 
-  sizeSlider->setBounds( static_cast<int>( sliderXpos - slider_size),
+sizeSlider->setBounds( static_cast<int>( sliderXpos - slider_size),
                      static_cast<int>( (getHeight() * 0.34f)),
                      slider_size, slider_size);
 
 
   //JUCE_LIVE_CONSTANT(0.50)
-  sizeLabel.setBounds(static_cast<int>( sliderXpos - slider_size),
+sizeLabel.setBounds(static_cast<int>( sliderXpos - slider_size),
                      getHeight() * 0.37 + 50,
                      slider_size, slider_size);
 
 
-  decaySlider->setBounds( static_cast<int>( sliderXpos * 2 - slider_size),
+decaySlider->setBounds( static_cast<int>( sliderXpos * 2 - slider_size),
                      static_cast<int>( (getHeight() * 0.34f)),
                      slider_size, slider_size);
 
 
 
-  decayLabel.setBounds(static_cast<int>( sliderXpos * 2 - slider_size),
+decayLabel.setBounds(static_cast<int>( sliderXpos * 2 - slider_size),
                      getHeight() * 0.37 + 50,
                      slider_size, slider_size);
 
 
-  drySlider->setBounds( static_cast<int>( sliderXpos * 3 - slider_size),
+drySlider->setBounds( static_cast<int>( sliderXpos * 3 - slider_size),
                      static_cast<int>( (getHeight() * 0.34f)),
                      slider_size, slider_size);
 
 
 
-  dryLabel.setBounds(static_cast<int>( sliderXpos * 3 - slider_size),
+dryLabel.setBounds(static_cast<int>( sliderXpos * 3 - slider_size),
                      getHeight() * 0.37 + 50,
                      slider_size, slider_size);
 
 
- wetSlider->setBounds( static_cast<int>( sliderXpos * 4 - slider_size),
+wetSlider->setBounds( static_cast<int>( sliderXpos * 4 - slider_size),
                      static_cast<int>( (getHeight() * 0.34f)),
                      slider_size, slider_size);
 
 
-
- wetLabel.setBounds(static_cast<int>( sliderXpos * 4 - slider_size),
+wetLabel.setBounds(static_cast<int>( sliderXpos * 4 - slider_size),
                        getHeight() * 0.37 + 50,
                        slider_size, slider_size);
 
@@ -176,11 +167,10 @@ preDelayLabel.setBounds(static_cast<int>( sliderXpos * 6 - slider_size),
 
 
 
-// Wrapper implementation
+// Wrapper Editor implementation
 
-WrappedRasterAudioProcessorEditor::WrappedRasterAudioProcessorEditor(AudioPluginAudioProcessor& p) :
-    AudioProcessorEditor(p),
-    rasterComponent(p), mProcessor(p)
+WrappedRasterAudioProcessorEditor::WrappedRasterAudioProcessorEditor(AudioPluginAudioProcessor& p)
+: AudioProcessorEditor(p), rasterComponent(p), mProcessor(p)
 {
 
   addAndMakeVisible(rasterComponent);
