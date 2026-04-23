@@ -10,14 +10,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout Parameters::createParameterL
     layout.add(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"SIZE",versionHint},
         "Room Size",
         juce::NormalisableRange<float>(10.0f, 200.0f, 1.0f),
-        50.0f, juce::String(), juce::AudioProcessorParameter::genericParameter,
-        [](float value, int) -> juce::String
-        {
-            juce::String valueToText =
-                juce::String(value , 1) + " TODO";
-
-            return valueToText;
-        })); // default:
+        50.0f)); // default:
 
 
     layout.add((std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"DECAY",versionHint},

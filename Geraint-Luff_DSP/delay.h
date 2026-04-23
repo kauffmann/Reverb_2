@@ -10,7 +10,7 @@
 
 #include <complex>
 #include "./fft.h"
-#include "./custom-windows.h"
+#include "./windows.h"
 
 namespace signalsmith {
 namespace delay {

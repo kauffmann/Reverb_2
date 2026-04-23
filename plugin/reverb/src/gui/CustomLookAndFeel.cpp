@@ -66,7 +66,7 @@ juce::BorderSize<int> CustomLookAndFeel::getLabelBorderSize(juce::Label&) {
   return juce::BorderSize{0};
 }
 
-juce::FontOptions CustomLookAndFeel::getRateLabelFont() {
+juce::FontOptions CustomLookAndFeel::getSliderLabelFont() {
   return interBold().withPointHeight(12.f);
 }
 

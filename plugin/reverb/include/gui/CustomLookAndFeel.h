@@ -13,7 +13,7 @@ public:
 
   juce::BorderSize<int> getLabelBorderSize(juce::Label&) override;
 
-  [[nodiscard]] static juce::FontOptions getRateLabelFont();
+  [[nodiscard]] static juce::FontOptions getSliderLabelFont();
 
   void drawRotarySlider(juce::Graphics&,
                         int x,

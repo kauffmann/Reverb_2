@@ -47,6 +47,20 @@ public:
 		return apvts;
 	}
 
+	// used by WrappedRasterAudioProcessorEditor to resize UI
+	double getResizeFactor()
+	{
+		return mResizeFactor;
+	}
+
+	void setResizeFactor(double value)
+	{
+		mResizeFactor = value;
+	}
+
+
+
+
 private:
 	
  		 //  <channels,diffusion steps>	
@@ -69,6 +83,8 @@ private:
 		return stack_array[argc + 100];  // BOOM
 	}
 
-	
+	// UI resize parameter
+	double mResizeFactor{ 1.2 };
+
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(AudioPluginAudioProcessor)
 };

@@ -11,6 +11,8 @@ ControllerSlider::ControllerSlider ( juce::AudioProcessorValueTreeState& state,
     setSliderStyle(SliderStyle::RotaryHorizontalVerticalDrag);
     setTextBoxStyle(Slider::TextEntryBoxPosition::NoTextBox, false, 0, 0);
 
+
+
     mAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(state,parameterID, *this);
 
 }

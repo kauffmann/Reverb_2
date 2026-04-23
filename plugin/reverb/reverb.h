@@ -34,6 +34,7 @@ END_JUCE_MODULE_DECLARATION
 #include <algorithm>
 #include <array>
 #include <cmath>
+#include <juce_gui_extra/juce_gui_extra.h>
 
 
 
