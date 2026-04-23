@@ -331,7 +331,7 @@ struct BasicReverb {
 
 	void setRoomSize(double sizeValue)
 	{
-		pendingRoomSizeMs = sizeValue;
+		pendingRoomSizeMs = 200.0f - sizeValue;
 		needsReconfigure = true;
 
 		/*roomSizeMs = sizeValue;

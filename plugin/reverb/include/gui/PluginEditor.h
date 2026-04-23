@@ -17,19 +17,18 @@ private:
 
   juce::Image background;
   juce::Label sizeLabel{"size label", "SIZE"};
-  //juce::Label decayLabel{"decay label", "DECAY"};
-  //juce::Label dryLabel{"rate label", "DRY"};
-  //juce::Label wetLabel{"rate label", "WET"};
-  //juce::Label earlyreflectionLabel{"early reflection label", "EARLY REFLECTION"};
-  //juce::Label preDelayLabel{"predelay label", "PREDELAY"};
+  juce::Label decayLabel{"decay label", "DECAY"};
+  juce::Label dryLabel{"dry label", "DRY"};
+  juce::Label wetLabel{"rate label", "WET"};
+  juce::Label earlyreflectionLabel{"early reflection label", "EARLY REFLECTION"};
+  juce::Label preDelayLabel{"predelay label", "PREDELAY"};
+
   std::unique_ptr<ControllerSlider> sizeSlider;
-
-
-  //ControllerSlider decaySlider;
-  //ControllerSlider drySlider;
-  //ControllerSlider wetSlider;
-  //ControllerSlider earlyReflectionSlider;
-  //ControllerSlider preDelay;
+  std::unique_ptr<ControllerSlider> decaySlider;
+  std::unique_ptr<ControllerSlider> drySlider;
+  std::unique_ptr<ControllerSlider> wetSlider;
+  std::unique_ptr<ControllerSlider> earlyReflectionSlider;
+  std::unique_ptr<ControllerSlider> preDelaySlider;
 
 
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(AudioPluginAudioProcessorEditor)
