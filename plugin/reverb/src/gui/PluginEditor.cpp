@@ -11,7 +11,7 @@ AudioPluginAudioProcessorEditor::AudioPluginAudioProcessorEditor(
 
   //background.setImage(juce::ImageCache::getFromMemory(reverb::assets::background_png, reverb::assets::background_pngSize));
   //addAndMakeVisible(background);
-  background = juce::ImageCache::getFromMemory(reverb::assets::background_dark_png, reverb::assets::background_dark_pngSize);
+  background = juce::ImageCache::getFromMemory(reverb::assets::background_blue_png, reverb::assets::background_blue_pngSize);
 
   sizeSlider = std::make_unique<ControllerSlider>(processorRef.getAPVTS(), "SIZE", "Room Size");
   //sizeSlider->setTextValueSuffix(" ");
