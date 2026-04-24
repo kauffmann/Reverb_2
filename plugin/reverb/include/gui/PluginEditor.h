@@ -31,6 +31,7 @@ private:
   std::unique_ptr<ControllerSlider> preDelaySlider;
 
 
+
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(AudioPluginAudioProcessorEditor)
 };
 

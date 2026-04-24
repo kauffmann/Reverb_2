@@ -97,67 +97,68 @@ void AudioPluginAudioProcessorEditor::resized() {
   const int slider_size = 80;
 
   int sliderXpos = static_cast<int>( getWidth() / 6);
+  int deltaSlidersXpos = 102;
 
-sizeSlider->setBounds( static_cast<int>( sliderXpos - slider_size),
+sizeSlider->setBounds( static_cast<int>( sliderXpos - deltaSlidersXpos),
                      static_cast<int>( (getHeight() * 0.34f)),
                      slider_size, slider_size);
 
 
   //JUCE_LIVE_CONSTANT(0.50)
-sizeLabel.setBounds(static_cast<int>( sliderXpos - slider_size),
+sizeLabel.setBounds(static_cast<int>( sliderXpos - deltaSlidersXpos),
                      getHeight() * 0.37 + 50,
                      slider_size, slider_size);
 
 
-decaySlider->setBounds( static_cast<int>( sliderXpos * 2 - slider_size),
+decaySlider->setBounds( static_cast<int>( sliderXpos * 2 - deltaSlidersXpos),
                      static_cast<int>( (getHeight() * 0.34f)),
                      slider_size, slider_size);
 
 
 
-decayLabel.setBounds(static_cast<int>( sliderXpos * 2 - slider_size),
+decayLabel.setBounds(static_cast<int>( sliderXpos * 2 - deltaSlidersXpos),
                      getHeight() * 0.37 + 50,
                      slider_size, slider_size);
 
 
-drySlider->setBounds( static_cast<int>( sliderXpos * 3 - slider_size),
+drySlider->setBounds( static_cast<int>( sliderXpos * 3 - deltaSlidersXpos),
                      static_cast<int>( (getHeight() * 0.34f)),
                      slider_size, slider_size);
 
 
 
-dryLabel.setBounds(static_cast<int>( sliderXpos * 3 - slider_size),
+dryLabel.setBounds(static_cast<int>( sliderXpos * 3 - deltaSlidersXpos),
                      getHeight() * 0.37 + 50,
                      slider_size, slider_size);
 
 
-wetSlider->setBounds( static_cast<int>( sliderXpos * 4 - slider_size),
+wetSlider->setBounds( static_cast<int>( sliderXpos * 4 - deltaSlidersXpos),
                      static_cast<int>( (getHeight() * 0.34f)),
                      slider_size, slider_size);
 
 
-wetLabel.setBounds(static_cast<int>( sliderXpos * 4 - slider_size),
+wetLabel.setBounds(static_cast<int>( sliderXpos * 4 - deltaSlidersXpos),
                        getHeight() * 0.37 + 50,
                        slider_size, slider_size);
 
-earlyReflectionSlider->setBounds( static_cast<int>( sliderXpos * 5 - slider_size),
+earlyReflectionSlider->setBounds( static_cast<int>( sliderXpos * 5 - deltaSlidersXpos),
                      static_cast<int>( (getHeight() * 0.34f)),
                      slider_size, slider_size);
 
 
 
-earlyreflectionLabel.setBounds(static_cast<int>( sliderXpos * 5 - slider_size),
+earlyreflectionLabel.setBounds(static_cast<int>( sliderXpos * 5 - deltaSlidersXpos),
                        getHeight() * 0.37 + 50,
                        slider_size, slider_size);
 
 
-preDelaySlider->setBounds( static_cast<int>( sliderXpos * 6 - slider_size),
+preDelaySlider->setBounds( static_cast<int>( sliderXpos * 6 - deltaSlidersXpos),
                      static_cast<int>( (getHeight() * 0.34f)),
                      slider_size, slider_size);
 
 
 
-preDelayLabel.setBounds(static_cast<int>( sliderXpos * 6 - slider_size),
+preDelayLabel.setBounds(static_cast<int>( sliderXpos * 6 - deltaSlidersXpos),
                        getHeight() * 0.37 + 50,
                        slider_size, slider_size);
 
