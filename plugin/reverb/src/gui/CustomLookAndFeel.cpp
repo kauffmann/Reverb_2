@@ -37,6 +37,7 @@ juce::Colour CustomLookAndFeel::getColor(Colors colorName) {
   static const std::array colors{
       juce::Colour{0xFFFFAA00},
       juce::Colour{0xFFDDECFF},
+      juce::Colour{0xFF8FE0B5}       //   0xFF66B88A       0xFF8FE0B5
   };
   return colors.at(juce::toUnderlyingType(colorName));
 }
@@ -80,18 +81,18 @@ void CustomLookAndFeel::drawRotarySlider(juce::Graphics& g,
                                          const float rotaryEndAngle,
                                          juce::Slider&) {
   const auto bounds = juce::Rectangle{x, y, width, height};
-  const auto knobCanalBounds = bounds.toFloat().reduced(3.75f);
+  const auto knobCanalBounds = bounds.toFloat().reduced(3.75f);//3,75
 
   g.setColour(juce::Colour{0xFF2A3A3B});
   g.fillEllipse(knobCanalBounds);
 
-  const auto valueArcBounds = knobCanalBounds.reduced(0.25f);
+  const auto valueArcBounds = knobCanalBounds.reduced(2.0f);  // 0.25
 
   juce::Path arc;
   const auto toAngle =
       rotaryStartAngle + sliderPos * (rotaryEndAngle - rotaryStartAngle);
   arc.addPieSegment(valueArcBounds, rotaryStartAngle, toAngle, 0.f);
-  g.setColour(getColor(Colors::orange));
+  g.setColour(getColor(Colors::paleGreen));
   g.fillPath(arc);
 
   const auto knobBounds = knobCanalBounds.reduced(4.f);
@@ -110,7 +111,7 @@ void CustomLookAndFeel::drawRotarySlider(juce::Graphics& g,
                 knobStrokeThickness);
 
   // Knob top
-  const auto knobTopBounds = knobBounds.reduced(7.f);
+  const auto knobTopBounds = knobBounds.reduced(4.f);
   auto knobTopFill = juce::ColourGradient{juce::Colour{0xFF6697CB},
                                           knobTopBounds.getCentreX(),
                                           knobTopBounds.getY() - 7.f,

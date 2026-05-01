@@ -2,89 +2,90 @@
 
 
 
-class AudioPluginAudioProcessor : public juce::AudioProcessor, public juce::AudioProcessorValueTreeState::Listener {
-public:
-	AudioPluginAudioProcessor();
-	~AudioPluginAudioProcessor() override;
 
-	void prepareToPlay(double sampleRate, int samplesPerBlock) override;
-	void releaseResources() override;
+	class AudioPluginAudioProcessor : public juce::AudioProcessor, public juce::AudioProcessorValueTreeState::Listener {
+	public:
+		AudioPluginAudioProcessor();
+		~AudioPluginAudioProcessor() override;
 
-	bool isBusesLayoutSupported(const BusesLayout& layouts) const override;
+		void prepareToPlay(double sampleRate, int samplesPerBlock) override;
+		void releaseResources() override;
 
-	void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
-	using AudioProcessor::processBlock;
+		bool isBusesLayoutSupported(const BusesLayout& layouts) const override;
 
-	juce::AudioProcessorEditor* createEditor() override;
-	bool hasEditor() const override;
+		void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
+		using AudioProcessor::processBlock;
 
-	const juce::String getName() const override;
+		juce::AudioProcessorEditor* createEditor() override;
+		bool hasEditor() const override;
 
-	bool acceptsMidi() const override;
-	bool producesMidi() const override;
-	bool isMidiEffect() const override;
-	double getTailLengthSeconds() const override;
+		const juce::String getName() const override;
 
-	int getNumPrograms() override;
-	int getCurrentProgram() override;
-	void setCurrentProgram(int index) override;
-	const juce::String getProgramName(int index) override;
-	void changeProgramName(int index, const juce::String& newName) override;
+		bool acceptsMidi() const override;
+		bool producesMidi() const override;
+		bool isMidiEffect() const override;
+		double getTailLengthSeconds() const override;
 
-	juce::String getParamID(juce::AudioProcessorParameter* param)
-	{
-		if (auto paramWithID = dynamic_cast<juce::AudioProcessorParameterWithID*>(param))
-			return paramWithID->paramID;
+		int getNumPrograms() override;
+		int getCurrentProgram() override;
+		void setCurrentProgram(int index) override;
+		const juce::String getProgramName(int index) override;
+		void changeProgramName(int index, const juce::String& newName) override;
 
-		return param->getName(50);
-	}
+		juce::String getParamID(juce::AudioProcessorParameter* param)
+		{
+			if (auto paramWithID = dynamic_cast<juce::AudioProcessorParameterWithID*>(param))
+				return paramWithID->paramID;
 
-	void getStateInformation(juce::MemoryBlock& destData) override;
-	void setStateInformation(const void* data, int sizeInBytes) override;
+			return param->getName(50);
+		}
 
-	juce::AudioProcessorValueTreeState& getAPVTS()
-	{
-		return apvts;
-	}
+		void getStateInformation(juce::MemoryBlock& destData) override;
+		void setStateInformation(const void* data, int sizeInBytes) override;
 
-	// used by WrappedRasterAudioProcessorEditor to resize UI
-	double getResizeFactor()
-	{
-		return mResizeFactor;
-	}
+		juce::AudioProcessorValueTreeState& getAPVTS()
+		{
+			return apvts;
+		}
 
-	void setResizeFactor(double value)
-	{
-		mResizeFactor = value;
-	}
+		// used by WrappedRasterAudioProcessorEditor to resize UI
+		double getResizeFactor()
+		{
+			return mResizeFactor;
+		}
 
-
-
-
-private:
-	
- 		 //  <channels,diffusion steps>	
-	BasicReverb<8, 4> reverb = BasicReverb<8, 4>();
-
-	// Parameters
-	juce::AudioProcessorValueTreeState apvts;
+		void setResizeFactor(double value)
+		{
+			mResizeFactor = value;
+		}
 
 
 
-	Parameters parameters;
 
-	// Listener callback when parameters change
-	void parameterChanged(const juce::String& parameterID, float newValue) override;
+	private:
 
-	// RUN: clang -O -g -fsanitize=address %t && ./a.out
-	int tester(int argc) {
-		int stack_array[100];
-		stack_array[1] = 0;
-		return stack_array[argc + 100];  // BOOM
-	}
+		//  <channels,diffusion steps>
+		BasicReverb<8, 4> reverb = BasicReverb<8, 4>();
 
-	// UI resize parameter
-	double mResizeFactor{ 1.2 };
+		// Parameters
+		juce::AudioProcessorValueTreeState apvts;
 
-  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(AudioPluginAudioProcessor)
-};
+
+
+		Parameters parameters;
+
+		// Listener callback when parameters change
+		void parameterChanged(const juce::String& parameterID, float newValue) override;
+
+		// RUN: clang -O -g -fsanitize=address %t && ./a.out
+		int tester(int argc) {
+			int stack_array[100];
+			stack_array[1] = 0;
+			return stack_array[argc + 100];  // BOOM
+		}
+
+		// UI resize parameter
+		double mResizeFactor{ 1.2 };
+
+		JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(AudioPluginAudioProcessor)
+	  };

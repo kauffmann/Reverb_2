@@ -5,37 +5,42 @@
 
 AudioPluginAudioProcessorEditor::AudioPluginAudioProcessorEditor(
     AudioPluginAudioProcessor& p)
-    : processorRef(p)
+    : processorRef(p), sizeSlider (processorRef.getAPVTS(), "SIZE", "Room Size"),
+      decaySlider (processorRef.getAPVTS(), "DECAY", "Decay"),
+      drySlider (processorRef.getAPVTS(), "DRY", "Dry"),
+      wetSlider (processorRef.getAPVTS(), "WET", "Wet"),
+      earlyReflectionSlider (processorRef.getAPVTS(), "EARLY REFLECTIONS", "Early Reflection"),
+      preDelaySlider(processorRef.getAPVTS(), "PREDELAY", "Predelay")
 {
 
 
   background = juce::ImageCache::getFromMemory(reverb::assets::background_allBlue_png, reverb::assets::background_allBlue_pngSize);
 
-  sizeSlider = std::make_unique<ControllerSlider>(processorRef.getAPVTS(), "SIZE", "Room Size");
-  //sizeSlider->setTextValueSuffix(" ");
-  sizeSlider->setPopupDisplayEnabled(true, true, this);
 
-  addAndMakeVisible(sizeSlider.get());
+  //sizeSlider->setTextValueSuffix(" ");
+  sizeSlider.setPopupDisplayEnabled(true, true, this);
+
+  addAndMakeVisible(sizeSlider);
 
   sizeLabel.setJustificationType(juce::Justification::centred);
   sizeLabel.setInterceptsMouseClicks(false, false);
   sizeLabel.setFont(lookAndFeel.getSliderLabelFont());
   addAndMakeVisible(sizeLabel);
 
-  decaySlider = std::make_unique<ControllerSlider>(processorRef.getAPVTS(), "DECAY", "Decay");
-  decaySlider->setPopupDisplayEnabled(true, true, this);
 
-  addAndMakeVisible(decaySlider.get());
+  decaySlider.setPopupDisplayEnabled(true, true, this);
+
+  addAndMakeVisible(decaySlider);
 
   decayLabel.setJustificationType(juce::Justification::centred);
   decayLabel.setInterceptsMouseClicks(false, false);
   decayLabel.setFont(lookAndFeel.getSliderLabelFont());
   addAndMakeVisible(decayLabel);
 
-  drySlider = std::make_unique<ControllerSlider>(processorRef.getAPVTS(), "DRY", "Dry");
-  drySlider->setPopupDisplayEnabled(true, true, this);
 
-  addAndMakeVisible(drySlider.get());
+  drySlider.setPopupDisplayEnabled(true, true, this);
+
+  addAndMakeVisible(drySlider);
 
   dryLabel.setJustificationType(juce::Justification::centred);
   dryLabel.setInterceptsMouseClicks(false, false);
@@ -43,20 +48,20 @@ AudioPluginAudioProcessorEditor::AudioPluginAudioProcessorEditor(
   addAndMakeVisible(dryLabel);
 
 
-  wetSlider = std::make_unique<ControllerSlider>(processorRef.getAPVTS(), "WET", "Wet");
-  wetSlider->setPopupDisplayEnabled(true, true, this);
 
-  addAndMakeVisible(wetSlider.get());
+  wetSlider.setPopupDisplayEnabled(true, true, this);
+
+  addAndMakeVisible(wetSlider);
 
   wetLabel.setJustificationType(juce::Justification::centred);
   wetLabel.setInterceptsMouseClicks(false, false);
   wetLabel.setFont(lookAndFeel.getSliderLabelFont());
   addAndMakeVisible(wetLabel);
 
-  earlyReflectionSlider = std::make_unique<ControllerSlider>(processorRef.getAPVTS(), "EARLY REFLECTIONS", "Early Reflection");
-  earlyReflectionSlider->setPopupDisplayEnabled(true, true, this);
 
-  addAndMakeVisible(earlyReflectionSlider.get());
+  earlyReflectionSlider.setPopupDisplayEnabled(true, true, this);
+
+  addAndMakeVisible(earlyReflectionSlider);
 
   earlyreflectionLabel.setJustificationType(juce::Justification::centred);
   earlyreflectionLabel.setInterceptsMouseClicks(false, false);
@@ -64,10 +69,10 @@ AudioPluginAudioProcessorEditor::AudioPluginAudioProcessorEditor(
   addAndMakeVisible(earlyreflectionLabel);
 
 
-  preDelaySlider = std::make_unique<ControllerSlider>(processorRef.getAPVTS(), "PREDELAY", "Predelay");
-  preDelaySlider->setPopupDisplayEnabled(true, true, this);
+  //preDelaySlider = std::make_unique<ControllerSlider>(processorRef.getAPVTS(), "PREDELAY", "Predelay");
+  preDelaySlider.setPopupDisplayEnabled(true, true, this);
 
-  addAndMakeVisible(preDelaySlider.get());
+  addAndMakeVisible(preDelaySlider);
 
   preDelayLabel.setJustificationType(juce::Justification::centred);
   preDelayLabel.setInterceptsMouseClicks(false, false);
@@ -99,7 +104,7 @@ void AudioPluginAudioProcessorEditor::resized() {
   int sliderXpos = static_cast<int>( getWidth() / 6);
   int deltaSlidersXpos = 102;
 
-sizeSlider->setBounds( static_cast<int>( sliderXpos - deltaSlidersXpos),
+sizeSlider.setBounds( static_cast<int>( sliderXpos - deltaSlidersXpos),
                      static_cast<int>( (getHeight() * 0.34f)),
                      slider_size, slider_size);
 
@@ -110,7 +115,7 @@ sizeLabel.setBounds(static_cast<int>( sliderXpos - deltaSlidersXpos),
                      slider_size, slider_size);
 
 
-decaySlider->setBounds( static_cast<int>( sliderXpos * 2 - deltaSlidersXpos),
+decaySlider.setBounds( static_cast<int>( sliderXpos * 2 - deltaSlidersXpos),
                      static_cast<int>( (getHeight() * 0.34f)),
                      slider_size, slider_size);
 
@@ -121,7 +126,7 @@ decayLabel.setBounds(static_cast<int>( sliderXpos * 2 - deltaSlidersXpos),
                      slider_size, slider_size);
 
 
-drySlider->setBounds( static_cast<int>( sliderXpos * 3 - deltaSlidersXpos),
+drySlider.setBounds( static_cast<int>( sliderXpos * 3 - deltaSlidersXpos),
                      static_cast<int>( (getHeight() * 0.34f)),
                      slider_size, slider_size);
 
@@ -132,7 +137,7 @@ dryLabel.setBounds(static_cast<int>( sliderXpos * 3 - deltaSlidersXpos),
                      slider_size, slider_size);
 
 
-wetSlider->setBounds( static_cast<int>( sliderXpos * 4 - deltaSlidersXpos),
+wetSlider.setBounds( static_cast<int>( sliderXpos * 4 - deltaSlidersXpos),
                      static_cast<int>( (getHeight() * 0.34f)),
                      slider_size, slider_size);
 
@@ -141,7 +146,7 @@ wetLabel.setBounds(static_cast<int>( sliderXpos * 4 - deltaSlidersXpos),
                        getHeight() * 0.37 + 50,
                        slider_size, slider_size);
 
-earlyReflectionSlider->setBounds( static_cast<int>( sliderXpos * 5 - deltaSlidersXpos),
+earlyReflectionSlider.setBounds( static_cast<int>( sliderXpos * 5 - deltaSlidersXpos),
                      static_cast<int>( (getHeight() * 0.34f)),
                      slider_size, slider_size);
 
@@ -152,7 +157,7 @@ earlyreflectionLabel.setBounds(static_cast<int>( sliderXpos * 5 - deltaSlidersXp
                        slider_size, slider_size);
 
 
-preDelaySlider->setBounds( static_cast<int>( sliderXpos * 6 - deltaSlidersXpos),
+preDelaySlider.setBounds( static_cast<int>( sliderXpos * 6 - deltaSlidersXpos),
                      static_cast<int>( (getHeight() * 0.34f)),
                      slider_size, slider_size);
 

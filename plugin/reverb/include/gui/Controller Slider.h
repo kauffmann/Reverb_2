@@ -19,7 +19,7 @@ public:
 
 
 private:
-    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> mAttachment;
+    juce::AudioProcessorValueTreeState::SliderAttachment mAttachment;
 
 
 

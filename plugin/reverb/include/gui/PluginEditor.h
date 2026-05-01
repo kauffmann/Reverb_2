@@ -23,12 +23,13 @@ private:
   juce::Label earlyreflectionLabel{"early reflection label", "EARLY REFLECTION"};
   juce::Label preDelayLabel{"predelay label", "PREDELAY"};
 
-  std::unique_ptr<ControllerSlider> sizeSlider;
-  std::unique_ptr<ControllerSlider> decaySlider;
-  std::unique_ptr<ControllerSlider> drySlider;
-  std::unique_ptr<ControllerSlider> wetSlider;
-  std::unique_ptr<ControllerSlider> earlyReflectionSlider;
-  std::unique_ptr<ControllerSlider> preDelaySlider;
+
+  ControllerSlider sizeSlider;
+  ControllerSlider decaySlider;
+  ControllerSlider drySlider;
+  ControllerSlider wetSlider;
+  ControllerSlider earlyReflectionSlider;
+  ControllerSlider preDelaySlider;
 
 
 
