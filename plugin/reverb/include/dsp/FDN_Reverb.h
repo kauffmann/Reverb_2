@@ -351,7 +351,7 @@ struct BasicReverb {
 		// This tells us how many dB to reduce per loop
 		double dbPerCycle = -60 / loopsPerRt60;
 
-		feedback.decayGain = std::pow(10, dbPerCycle * 0.05);   
+		feedback.decayGain = std::pow(10, dbPerCycle * 0.05);
 
 	}
 
@@ -420,7 +420,7 @@ struct BasicReverb {
 			for (int c = 0; c < channels; ++c) 
 			{													
 				//out[c] = dry * out[c] * scalingFactor + diffuserGain * longLasting[c] * scalingFactor + earlyReflection[c] * earlyReflectionGain * scalingFactor; 
-				out[c] = (dry * out[c] + diffuserGain * longLasting[c] + earlyReflection[c] * earlyReflectionGain) * scalingFactor;
+				out[c] = (dry * out[c] +  diffuserGain * longLasting[c] + earlyReflection[c] * earlyReflectionGain) * scalingFactor;
 			}
 
 			mix.multiToStereo(out, in);

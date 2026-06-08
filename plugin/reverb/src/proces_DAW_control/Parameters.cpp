@@ -9,7 +9,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout Parameters::createParameterL
 
     layout.add(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"SIZE",versionHint},
         "Room Size",
-        juce::NormalisableRange<float>(10.0f, 200.0f, 1.0f),
+        juce::NormalisableRange<float>(1.0f, 200.0f, 1.0f),
         50.0f,juce::String(), juce::AudioProcessorParameter::genericParameter,
         [](float value, int) -> juce::String
         {
@@ -23,18 +23,25 @@ juce::AudioProcessorValueTreeState::ParameterLayout Parameters::createParameterL
     layout.add((std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"DECAY",versionHint},
         "Decay",
         juce::NormalisableRange<float>(0.2f, 40.0f, 0.1f),
-        6.0f)));
+        6.0f, juce::String(), juce::AudioProcessorParameter::genericParameter,
+        [](float value, int) -> juce::String
+        {
+            juce::String valueToText =
+                juce::String(value, 1) + " s";
+
+            return valueToText;
+        })));
 
 
     layout.add((std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"DRY", versionHint},
         "Dry",
-        juce::NormalisableRange<float>(0.0f, 1.0f, 0.1f),
-        0.4f))); // default
-
-    layout.add((std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"WET",versionHint},
-        "Wet",
-        juce::NormalisableRange<float>(0.0f, 0.5f, 0.1f),
+        juce::NormalisableRange<float>(0.0f, 0.4f, 0.1f),
         0.3f))); // default
+
+    layout.add((std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"REVERB",versionHint},
+        "REVERB",
+        juce::NormalisableRange<float>(0.0f, 1.0f, 0.1f),
+        0.3f)));
 
     layout.add((std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"EARLY REFLECTIONS",versionHint},
         "Early Reflection",

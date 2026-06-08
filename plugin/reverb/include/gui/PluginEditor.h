@@ -19,7 +19,7 @@ private:
   juce::Label sizeLabel{"size label", "SIZE"};
   juce::Label decayLabel{"decay label", "DECAY"};
   juce::Label dryLabel{"dry label", "DRY"};
-  juce::Label wetLabel{"rate label", "WET"};
+  juce::Label wetLabel{"reverb label", "REVERB"};
   juce::Label earlyreflectionLabel{"early reflection label", "EARLY REFLECTION"};
   juce::Label preDelayLabel{"predelay label", "PREDELAY"};
 

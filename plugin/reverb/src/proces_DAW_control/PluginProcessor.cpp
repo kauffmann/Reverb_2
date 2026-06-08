@@ -18,7 +18,7 @@
         apvts.addParameterListener("SIZE", this);
         apvts.addParameterListener("DECAY", this);
         apvts.addParameterListener("DRY", this);
-        apvts.addParameterListener("WET", this);
+        apvts.addParameterListener("REVERB", this);
         apvts.addParameterListener("EARLY REFLECTIONS", this);
         apvts.addParameterListener("PREDELAY", this);
     }
@@ -28,7 +28,7 @@
         apvts.removeParameterListener("SIZE", this);
         apvts.removeParameterListener("DECAY", this);
         apvts.removeParameterListener("DRY", this);
-        apvts.removeParameterListener("WET", this);
+        apvts.removeParameterListener("REVERB", this);
         apvts.removeParameterListener("EARLY REFLECTIONS", this);
         apvts.removeParameterListener("PREDELAY", this);
     }
@@ -228,7 +228,7 @@
             reverb.setDry(newValue);
         }
 
-        else if (parameterID == "WET")
+        else if (parameterID == "REVERB")
         {
             reverb.setDiffusionGain(newValue);
         }

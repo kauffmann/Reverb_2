@@ -8,7 +8,7 @@ AudioPluginAudioProcessorEditor::AudioPluginAudioProcessorEditor(
     : processorRef(p), sizeSlider (processorRef.getAPVTS(), "SIZE", "Room Size"),
       decaySlider (processorRef.getAPVTS(), "DECAY", "Decay"),
       drySlider (processorRef.getAPVTS(), "DRY", "Dry"),
-      wetSlider (processorRef.getAPVTS(), "WET", "Wet"),
+      wetSlider (processorRef.getAPVTS(), "REVERB", "REVERB"),
       earlyReflectionSlider (processorRef.getAPVTS(), "EARLY REFLECTIONS", "Early Reflection"),
       preDelaySlider(processorRef.getAPVTS(), "PREDELAY", "Predelay")
 {
@@ -16,6 +16,8 @@ AudioPluginAudioProcessorEditor::AudioPluginAudioProcessorEditor(
 
   background = juce::ImageCache::getFromMemory(reverb::assets::background_allBlue_png, reverb::assets::background_allBlue_pngSize);
 
+
+    
 
   //sizeSlider->setTextValueSuffix(" ");
   sizeSlider.setPopupDisplayEnabled(true, true, this);
