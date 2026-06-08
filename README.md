@@ -1,0 +1,31 @@
+
+
+<img width="1265" height="546" alt="Screenshot 2026-06-08 at 12 35 01" src="https://github.com/user-attachments/assets/0d24f7d9-725e-4bcb-a5c2-7402ed480259" />
+<br/><br/><br/><br/><br/><br/>
+
+
+
+### Feedback Delay Network Reverb VST3 audio FX plugin.
+
+Based on Geraint Luft's "Let's write a reverb," talk. This is my own custom implementation of a reverb using his DSP library. 
+I've also added early refelctions and pre-delay. Talk: https://www.youtube.com/watch?v=QWnD30xHjW4 Geraint Luft: https://signalsmith-audio.co.uk/
+
+## Dependency 
+
+it use Geraint Luft's DSP library https://github.com/Signalsmith-Audio/dsp.
+
+It use JUCE 8 https://juce.com/ Please check license if you are using this.
+
+It use CMake
+
+## Usage
+After cloning it locally, creating your own git repo,  you can proceed with the usual CMake workflow.
+
+From CLI, at your project directory, execute:
+
+$ cmake -S . -B build
+$ cmake --build build
+
+The first run will take the most time because the dependencies (CPM, JUCE, and googletest) need to be downloaded.
+
+On Mac/Xcode you must first run config from terminal, creating a .xcodeproj file you can open in xcode(cmake -S . -B build -G Xcode). In visual studio and visual studio code you can do this within editor IDE, using build in terminal.
