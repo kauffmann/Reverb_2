@@ -8,7 +8,6 @@ Based on Geraint Luft's "Let's write a reverb," talk. This is my own custom impl
 I've also added early refelctions and pre-delay. 
 	 
 Dependency: it uses Geraint Luft's DSP library https://github.com/Signalsmith-Audio/dsp
-This is included in project as my custom library, as I had to change the file windows.h to custom-windows.h to avoid conflict.
 Check his license in Geraint-Luff-DSP folder. 
 
 
