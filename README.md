@@ -5,7 +5,7 @@
 
 
 
-# Feedback Delay Network Reverb VST3 audio FX plugin.
+# Feedback Delay Network Reverb VST3 Audio FX Plugin
 
 Based on Geraint Luft's "Let's write a reverb," talk. This is my own custom implementation of a reverb using his DSP library. 
 I've also added early refelctions and pre-delay. Talk: https://www.youtube.com/watch?v=QWnD30xHjW4 Geraint Luft: https://signalsmith-audio.co.uk/
